@@ -30,7 +30,7 @@
                             <div class="text">
                             {{$p->isiPosting}}
                             </div>
-                            <a href="#" class="main-button">Read More</a>
+                            <a href="/detailPosting/{{$p->id}}" class="main-button">Read More</a>
                         </div>
                     </div>
                 </div>

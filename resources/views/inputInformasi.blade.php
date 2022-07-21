@@ -20,9 +20,10 @@
                 <div class="form-group row">
                         <label>Jenis Informasi</label>
                         <select class="form-control select2" name="jenisInformasi">
-                    <option selected="selected">Pilih</option>
-                   
-                  <option value=""> </option>
+                    <option selected="selected">UMKM</option>
+                    <option> Olahraga </option>
+                    <option> Pendidikan </option>
+                 
                    
                   </select>
                       </select>

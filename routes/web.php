@@ -16,6 +16,8 @@ Route::get('/', 'HomeController@welcome')->name('welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/detailPosting/{id?}', 'HomeController@detailPosting')->name('detailPosting');
+Route::get('/detailProduk/{id?}', 'HomeController@detailProduk')->name('detailProduk');
 Route::get('/listProduk', 'HomeController@listProduk')->name('produk');
 Route::get('/listPosting', 'HomeController@listPosting')->name('posting');
 Route::get('/listInformasi', 'HomeController@listInformasi')->name('Informasi');

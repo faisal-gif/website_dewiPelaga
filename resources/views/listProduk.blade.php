@@ -34,7 +34,7 @@
                             </ul>
                         </div>
                         <div class="pricing-footer">
-                            <a href="#" class="main-button">Beli</a>
+                        <a href="/detailProduk/{{$p->id}}" class="main-button">Detail</a>
                         </div>
                     </div>
                 </div>

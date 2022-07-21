@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('welcome','listProduk','listPosting','listInformasi');
+        $this->middleware('auth')->except('welcome','listProduk','listPosting','listInformasi','detailProduk');
     }
 
     /**
@@ -27,6 +27,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+     public function detailPosting($id)
+    {
+        $posting=posting::where('id',$id)->get();
+        return view('detailPosting',compact('posting'));
+    }
+     public function detailProduk($id)
+    {
+        $produk=produk::where('id',$id)->get();
+        return view('detailProduk',compact('produk'));
     }
     public function listProduk()
     {

@@ -22,16 +22,6 @@
                         <input type="text" class="form-control" name="namaPosting" id="">
                 </div>
                 <div class="form-group row">
-                        <label>Jenis Posting</label>
-                        <select class="form-control select2" name="jenisPosting">
-                    <option selected="selected">Pilih</option>
-                   
-                  <option value=""> </option>
-                   
-                  </select>
-                      </select>
-                        </div>
-                <div class="form-group row">
                         <label>Isi Posting</label>
                         <textarea name="isiPosting" class="form-control"></textarea>
                 </div>

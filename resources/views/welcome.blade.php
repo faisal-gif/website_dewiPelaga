@@ -240,7 +240,7 @@ https://templatemo.com/tm-535-softy-pinko
                             </ul>
                         </div>
                         <div class="pricing-footer">
-                            <a href="#" class="main-button">Beli</a>
+                            <a href="/detailProduk/{{$p->id}}" class="main-button">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -314,7 +314,7 @@ https://templatemo.com/tm-535-softy-pinko
                             <div class="text">
                             {{$p->isiPosting}}
                             </div>
-                            <a href="#" class="main-button">Read More</a>
+                            <a href="/detailPosting/{{$p->id}}" class="main-button">Read More</a>
                         </div>
                     </div>
                 </div>
