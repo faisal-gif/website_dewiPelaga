@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- ***** Pricing Plans Start ***** -->
-    <section class="section colored" id="pricing-plans">
+    <section class="section" id="pricing-plans">
         <div class="container">
             <!-- ***** Section Title Start ***** -->
             <div class="row">
@@ -24,11 +24,9 @@
                             <h3 class="pricing-title">{{$p->namaBarang}}</h3>
                         </div>
                         <div class="pricing-body">
-                            <div class="price-wrapper">
-                                <img src="{{asset($p->foto)}}" alt="" width="280">
-                            
-                            </div>
+                         
                             <ul class="list">
+                                <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
                                 <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
                                 <li class="active">Keterangan : {{$p->keteranganBarang}}</li>
                                 <li class="active">Stok : {{$p->stok}}</li>

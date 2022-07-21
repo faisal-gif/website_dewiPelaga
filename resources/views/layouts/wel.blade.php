@@ -34,9 +34,8 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
-                            <img src="assets/images/logo.png" alt="Softy Pinko"/>
-                        </a>
+                      
+                            <img src="{{ asset('logo.png')}}" alt="Softy Pinko" width="90"/>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">

@@ -35,8 +35,9 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
-                            <img src="assets/images/logo.png" alt="Pengabdian"/>
+                        <a href="#" >
+                        
+                            <img src="{{ asset('logo.png')}}" alt="Pengabdian" width="90"/>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -67,9 +68,9 @@ https://templatemo.com/tm-535-softy-pinko
             <div class="container">
                 <div class="row">
                     <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
-                        <h1>Website <strong>Pengabdian</strong></h1>
-                        <p>Softy Pinko is a professional Bootstrap 4.0 theme designed by Template Mo 
-                        for your company at absolutely free of charge</p>
+                        <h1>Dewi <strong>Pelaga</strong></h1>
+                        <p>Dewi Pelaga berkomunikasi dengan para pelaku UMKM lain untuk bersinergi, 
+                            saling bertukar pikiran bahkan saling support dari sisi produk</p>
                     </div>
                 </div>
             </div>
@@ -91,7 +92,7 @@ https://templatemo.com/tm-535-softy-pinko
                                     <i><img src="assets/images/featured-item-01.png" alt=""></i>
                                 </div>
                                 <h5 class="features-title">UMKM</h5>
-                                <p>Customize anything in this template to fit your website needs</p>
+                                <p>Usaha mikro kecil menengah adalah istilah umum dalam dunia ekonomi yang merujuk kepada usaha ekonomi produktif yang dimiliki perorangan maupun badan usaha</p>
                             </div>
                         </div>
                         <!-- ***** Features Small Item End ***** -->
@@ -102,8 +103,8 @@ https://templatemo.com/tm-535-softy-pinko
                                 <div class="icon">
                                     <i><img src="assets/images/featured-item-01.png" alt=""></i>
                                 </div>
-                                <h5 class="features-title">Best Relationship</h5>
-                                <p>Contact us immediately if you have a question in mind</p>
+                                <h5 class="features-title">Olahraga</h5>
+                                <p>Peralatan olahraga, disebut juga barang olahraga, adalah peralatan, material, dan pakaian yang digunakan untuk bertanding dalam suatu olahraga.</p>
                             </div>
                         </div>
                         <!-- ***** Features Small Item End ***** -->
@@ -114,11 +115,12 @@ https://templatemo.com/tm-535-softy-pinko
                                 <div class="icon">
                                     <i><img src="assets/images/featured-item-01.png" alt=""></i>
                                 </div>
-                                <h5 class="features-title">Ultimate Marketing</h5>
-                                <p>You just need to tell your friends about our free templates</p>
+                                <h5 class="features-title">Pendidikan</h5>
+                                <p>Pendidikan adalah pembelajaran pengetahuan, keterampilan, dan kebiasaan sekelompok orang yang diturunkan dari satu generasi ke generasi berikutnya melalui pengajaran, pelatihan, atau penelitian.</p>
                             </div>
                         </div>
                         <!-- ***** Features Small Item End ***** -->
+                        
                     </div>
                 </div>
             </div>
@@ -227,11 +229,10 @@ https://templatemo.com/tm-535-softy-pinko
                             <h3 class="pricing-title">{{$p->namaBarang}}</h3>
                         </div>
                         <div class="pricing-body">
-                            <div class="price-wrapper">
-                                <img src="{{asset($p->foto)}}" alt="" width="280">
-                            
-                            </div>
+                        
+                                
                             <ul class="list">
+                                <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
                                 <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
                                 <li class="active">Keterangan : {{$p->keteranganBarang}}</li>
                                 <li class="active">Stok : {{$p->stok}}</li>
