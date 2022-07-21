@@ -17,8 +17,7 @@ class CreateInformasiTable extends Migration
             $table->bigIncrements('id');
             $table->integer('idUser');
             $table->string('namaInformasi');
-            $table->string('jenisInformasi');
-            $table->string('isiInformasi');
+            $table->text('isiInformasi');
             $table->timestamps();
         });
     }
