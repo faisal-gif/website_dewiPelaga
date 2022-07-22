@@ -59,7 +59,7 @@ class HomeController extends Controller
     public function listInformasi($jenis)
     {
         $informasi=informasi::where('jenisInformasi',$jenis)->get();
-        return view('listInformasi',compact('informasi'));
+        return view('listInformasi',compact('informasi','jenis'));
     }
     public function welcome()
     {

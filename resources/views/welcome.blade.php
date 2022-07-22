@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
 
-    <title>Pengabdian</title>
+    <title>Dewi Pelaga</title>
 <!--
 SOFTY PINKO
 https://templatemo.com/tm-535-softy-pinko
@@ -76,8 +76,7 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="row">
                     <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
                         <h1>Dewi <strong>Pelaga</strong></h1>
-                        <p>Dewi Pelaga berkomunikasi dengan para pelaku UMKM lain untuk bersinergi, 
-                            saling bertukar pikiran bahkan saling support dari sisi produk</p>
+                        <p>Kawasan (Dewi Pelaga) Desa Wisata, Pendidikan Keluarga berada di daerah Cemorokandang. Kawasan memiliki banyak potensi luar biasa seperti potensi kumpulan UMKM yang bisa saling bersinergi, potensi alam yang bisa mendukung sebagai tempat wisata, olahraga dan juga potensi dalam hal pendidikan. Di daerah Cemorokandang terdapat minimal 10 jenis UMKM dimana beberapa UMKM tersebut tergabung dalam UMKM Binaan seperti Amang Tiwi.</p>
                     </div>
                 </div>
             </div>
@@ -232,49 +231,6 @@ https://templatemo.com/tm-535-softy-pinko
         </div>
     </section>
     <!-- ***** Testimonials End ***** -->
-
-    <!-- ***** Pricing Plans Start ***** -->
-    <section class="section colored" id="pricing-plans">
-        <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">Barang Terlaris</h2>
-                    </div>
-                </div>
-            </div>
-            <!-- ***** Section Title End ***** -->
-
-            <div class="row">
-                <!-- ***** Pricing Item Start ***** -->
-                @foreach($produk as $p)
-                <div class="col-lg-4 col-md-6 col-sm-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                    <div class="pricing-item">
-                        <div class="pricing-header">
-                            <h3 class="pricing-title">{{$p->namaBarang}}</h3>
-                        </div>
-                        <div class="pricing-body">
-                        
-                                
-                            <ul class="list">
-                                <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
-                                <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
-                                <li class="active">Keterangan : {!! $p->keteranganBarang !!}</li>
-                                <li class="active">Harga : {{$p->hargaBarang}}</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-footer">
-                            <a href="/detailProduk/{{$p->id}}" class="main-button">Detail</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- ***** Pricing Item End ***** -->
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <!-- ***** Pricing Plans End ***** -->
     <!-- ***** Blog End ***** -->
 
     <!-- ***** Contact Us End ***** -->
