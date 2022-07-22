@@ -47,7 +47,7 @@ https://templatemo.com/tm-535-softy-pinko
                             
                             <li><a href="#welcome" class="active">Home</a></li>
                             <li>
-                            <div class="dropdown">
+                            <div class="dropup">
                             <button class="btn btn-default" type="button" data-toggle="dropdown">Kategori</button>
                                 <ul class="dropdown-menu">
                                     <li><a href="/listInformasi/UMKM">UMKM</a></li>
