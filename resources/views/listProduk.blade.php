@@ -63,42 +63,42 @@
             </div>
         </div>
     </section>
-    <!-- ***** Pricing Plans End ***** -->
-    <section class="section" id="blog">
-        <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">Postingan Toko</h2>
+  
+    <!-- ***** Home Parallax Start ***** -->
+    <section class="mini" id="work-process">
+        <div class="mini-content">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-lg-3 col-lg-6">
+                        <div class="info">
+                            <h1>Artikel Terbaru</h1>
+                        </div>
                     </div>
                 </div>
-                            
-            </div>
-            <!-- ***** Section Title End ***** -->
 
-            <div class="row">
-            @foreach($posting as $p)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-thumb">
-                        <div class="img">
-                            <img src="{{$p->fotoPosting}}" alt="" width="300" height="200">
-                        </div>
-                        <div class="blog-content">
-                            <h3>
-                                <a href="#">{{$p->namaPosting}}</a>
-                            </h3>
-                            <div class="text">
-                            {{$p->isiPosting}}
-                            </div>
-                            <a href="/detailPosting/{{$p->id}}" class="main-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                <!-- ***** Mini Box Start ***** -->
                
-               @endforeach
+                <div class="row">
+                @foreach($posting as $p)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                <a href="/detailPosting/{{$p->id}}">
+                            <div class="features-small-item">
+                                <img src="{{$p->fotoPosting}}" alt="" width="200"></i>
+                                
+                                <h6 class="features-title">{{$p->namaPosting}}</h6>
+                                <p>{!! $p->isiPosting !!}</p>
+                            </div>
+                </a>
+                        </div>
+                    @endforeach
+                 
+                
+                </div>
+                <!-- ***** Mini Box End ***** -->
             </div>
         </div>
     </section>
+    <!-- ***** Home Parallax End ***** -->
+
 
 @endsection
