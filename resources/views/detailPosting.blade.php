@@ -1,7 +1,7 @@
 @extends('layouts.wel')
 
 @section('content')
-
+<div class="welcome-area" id="welcome"></div>
     <!-- ***** Pricing Plans Start ***** -->
     <section class="section" id="pricing-plans">
         <div class="container">
