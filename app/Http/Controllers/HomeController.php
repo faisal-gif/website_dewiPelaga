@@ -47,6 +47,7 @@ class HomeController extends Controller
     public function listProduk($idUser)
     {
         $produk=produk::where('idUser',$idUser)->get();
+        $produk=posting::where('idUser',$idUser)->get();
         $informasi=informasi::where('idUser',$idUser)->get();
         return view('listProduk',compact('produk','informasi'));
        
