@@ -14,8 +14,8 @@
             </div>
         </div>
     </div>
-    <a  class="btn btn-primary btn-lg btn-floating"  href="https:\\{{$i->socialMedia}}" role="button"><i class="fa fa-instagram"></i></a>
-    <a  class="btn btn-primary btn-lg btn-floating"  href="https:\\{{$i->tokoOnline}}" role="button"><i class="fa fa-shopping-cart"></i></a>
+    <a  class="btn btn-primary btn-lg btn-floating"  href="{{$i->socialMedia}}" role="button"><i class="fa fa-instagram"></i></a>
+    <a  class="btn btn-primary btn-lg btn-floating"  href="{{$i->tokoOnline}}" role="button"><i class="fa fa-shopping-cart"></i></a>
                   
 </div>
 <!-- ***** Header Text End ***** -->
