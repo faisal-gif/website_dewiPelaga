@@ -24,17 +24,16 @@
                         <h2 class="section-title">{{$p->namaBarang}}</h2>
                     </div>
                     <div class="left-text">
-                        <p>{{$p->keteranganBarang}}</p>
+                        <p>{!! $p->keteranganBarang !!}</p>
                     </div>
                     
-                    <div class="left-text">
-                        <p><h6>Stok : </h6>{{$p->stok}}</p>
-                    </div>
-
                      <div class="left-text">
                         <p><h4>Harga : </h4> {{$p->hargaBarang}} </p>
                     </div>
-
+                    
+                    <div class="left-text">
+                        <p><h6>Lainnya : </h6>{{$p->lainnya}}</p>
+                    </div>
                     <div class="left-text">
                        <a href="#" class="main-button">Whitelist</a>
                        <a href="#" class="main-button">Beli</a>

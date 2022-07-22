@@ -19,6 +19,7 @@ class CreatePostingsTable extends Migration
             $table->string('fotoPosting');
             $table->string('namaPosting');
             $table->text('isiPosting');
+            $table->string('status');
             $table->timestamps();
         });
     }

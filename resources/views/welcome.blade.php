@@ -43,9 +43,16 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="#welcome" class="active">Home</a></li>
-                            <li><a href="/listPosting">Postingan Social Media</a></li>
-                            <li><a href="/listProduk">Barang Yang Dijual</a></li>
-                            <li><a href="listInformasi">Informasi Toko</a></li>
+                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                        
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/listInformasi/UMKM">UMKM</a>
+                                <a class="dropdown-item" href="/listInformasi/Olahraga">Olahraga</a>
+                                <a class="dropdown-item" href="/listInformasi/Pendidikan">Pendidikan</a>
+                                <a class="dropdown-item" href="/listInformasi/Pariwisata">Pariwisata</a>
+                            </div>
+                            </li>
+                           
                             <li><a href="/register">Daftar</a></li>
                             <li><a href="/login">Login</a></li>
                         </ul>
@@ -87,30 +94,35 @@ https://templatemo.com/tm-535-softy-pinko
                     <div class="row">
                         <!-- ***** Features Small Item Start ***** -->
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                            <div class="features-small-item">
+                        <a href="/listInformasi/UMKM">    
+                        <div class="features-small-item">
                                 <div class="icon">
                                     <i><img src="assets/images/featured-item-01.png" alt=""></i>
                                 </div>
                                 <h5 class="features-title">UMKM</h5>
                                 <p>Usaha mikro kecil menengah adalah istilah umum dalam dunia ekonomi yang merujuk kepada usaha ekonomi produktif yang dimiliki perorangan maupun badan usaha</p>
                             </div>
+                        </a>
                         </div>
                         <!-- ***** Features Small Item End ***** -->
 
                         <!-- ***** Features Small Item Start ***** -->
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
-                            <div class="features-small-item">
+                        <a href="/listInformasi/Olahraga">    
+                        <div class="features-small-item">
                                 <div class="icon">
                                     <i><img src="assets/images/featured-item-01.png" alt=""></i>
                                 </div>
                                 <h5 class="features-title">Olahraga</h5>
                                 <p>Peralatan olahraga, disebut juga barang olahraga, adalah peralatan, material, dan pakaian yang digunakan untuk bertanding dalam suatu olahraga.</p>
                             </div>
+                        </a>
                         </div>
                         <!-- ***** Features Small Item End ***** -->
 
                         <!-- ***** Features Small Item Start ***** -->
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                        <a href="/listInformasi/Pendidikan">
                             <div class="features-small-item">
                                 <div class="icon">
                                     <i><img src="assets/images/featured-item-01.png" alt=""></i>
@@ -118,6 +130,20 @@ https://templatemo.com/tm-535-softy-pinko
                                 <h5 class="features-title">Pendidikan</h5>
                                 <p>Pendidikan adalah pembelajaran pengetahuan, keterampilan, dan kebiasaan sekelompok orang yang diturunkan dari satu generasi ke generasi berikutnya melalui pengajaran, pelatihan, atau penelitian.</p>
                             </div>
+                        </a>
+                        </div>
+                        <!-- ***** Features Small Item End ***** -->
+                        <!-- ***** Features Small Item Start ***** -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                        <a href="/listInformasi/Pariwisata">
+                            <div class="features-small-item">
+                                <div class="icon">
+                                    <i><img src="assets/images/featured-item-01.png" alt=""></i>
+                                </div>
+                                <h5 class="features-title">Pariwisata</h5>
+                                <p>Pariwisata atau turisme adalah suatu perjalanan yang dilakukan untuk rekreasi atau liburan dan juga persiapan yang dilakukan untuk aktivitas ini.</p>
+                            </div>
+                        </a>
                         </div>
                         <!-- ***** Features Small Item End ***** -->
                         
@@ -138,7 +164,7 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="row">
                     <div class="offset-lg-3 col-lg-6">
                         <div class="info">
-                            <h1>Toko Terlaris</h1>
+                            <h1>Artikel Terbaru</h1>
                         </div>
                     </div>
                 </div>
@@ -146,13 +172,17 @@ https://templatemo.com/tm-535-softy-pinko
                 <!-- ***** Mini Box Start ***** -->
                
                 <div class="row">
-                @foreach($user as $u)
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>{{$u->name}}</strong>
-                        </a>
-                    </div>
+                @foreach($posting as $p)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                <a href="/detailPosting/{{$p->id}}">
+                            <div class="features-small-item">
+                                <img src="{{$p->fotoPosting}}" alt="" width="200"></i>
+                                
+                                <h6 class="features-title">{{$p->namaPosting}}</h6>
+                                <p>{!! $p->isiPosting !!}</p>
+                            </div>
+                </a>
+                        </div>
                     @endforeach
                  
                 
@@ -184,21 +214,17 @@ https://templatemo.com/tm-535-softy-pinko
             <div class="row">
                 <!-- ***** Testimonials Item Start ***** -->
                 @foreach($informasi as $i)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="team-item">
-                        <div class="team-content">
-                            <i>{{$i->namaInformasi}}</i>
-                            <p>{{$i->isiInformasi}}</p>
-                            <div class="user-image">
-                               
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                            <a href="/listProduk/{{$i->idUser}}">
+                            <div class="features-small-item">
+                                <div class="icon">
+                                <i class="fa fa-shopping-cart" style="font-size:30px;"></i>
+                                </div>
+                                <h5 class="features-title">{{$i->namaInformasi}}</h5>
+                                <p>{!! $i->isiInformasi !!}</p>
                             </div>
-                            <div class="team-info">
-                                <h3 class="user-name">Catherine Soft</h3>
-                                <span>Managing Director</span>
-                            </div>
+                            </a>
                         </div>
-                    </div>
-                </div>
                 @endforeach
                 <!-- ***** Testimonials Item End ***** -->
               
@@ -234,8 +260,7 @@ https://templatemo.com/tm-535-softy-pinko
                             <ul class="list">
                                 <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
                                 <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
-                                <li class="active">Keterangan : {{$p->keteranganBarang}}</li>
-                                <li class="active">Stok : {{$p->stok}}</li>
+                                <li class="active">Keterangan : {!! $p->keteranganBarang !!}</li>
                                 <li class="active">Harga : {{$p->hargaBarang}}</li>
                             </ul>
                         </div>
@@ -250,79 +275,6 @@ https://templatemo.com/tm-535-softy-pinko
         </div>
     </section>
     <!-- ***** Pricing Plans End ***** -->
-
-    <!-- ***** Counter Parallax Start ***** -->
-    <section class="counter">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom">
-                            <strong>126</strong>
-                            <span>Projects</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-top">
-                            <strong>63</strong>
-                            <span>Happy Clients</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item decoration-bottom">
-                            <strong>18</strong>
-                            <span>Awards Wins</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="count-item">
-                            <strong>27</strong>
-                            <span>Countries</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ***** Counter Parallax End ***** -->   
-
-    <!-- ***** Blog Start ***** -->
-    <section class="section" id="blog">
-        <div class="container">
-            <!-- ***** Section Title Start ***** -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">Postingan Toko</h2>
-                    </div>
-                </div>
-                            
-            </div>
-            <!-- ***** Section Title End ***** -->
-
-            <div class="row">
-            @foreach($posting as $p)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="blog-post-thumb">
-                        <div class="img">
-                            <img src="{{$p->fotoPosting}}" alt="" width="300" height="200">
-                        </div>
-                        <div class="blog-content">
-                            <h3>
-                                <a href="#">{{$p->namaPosting}}</a>
-                            </h3>
-                            <div class="text">
-                            {{$p->isiPosting}}
-                            </div>
-                            <a href="/detailPosting/{{$p->id}}" class="main-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-               
-               @endforeach
-            </div>
-        </div>
-    </section>
     <!-- ***** Blog End ***** -->
 
     <!-- ***** Contact Us End ***** -->

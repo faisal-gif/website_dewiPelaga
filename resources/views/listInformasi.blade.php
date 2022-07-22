@@ -1,48 +1,49 @@
 @extends('layouts.wel')
 
 @section('content')
+<div class="welcome-area" id="welcome">
 
-    <!-- ***** Testimonials Start ***** -->
-    <section class="section" id="testimonials">
+<!-- ***** Header Text Start ***** -->
+<div class="header-text">
+    <div class="container">
+        <div class="row">
+            <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+                <h1>UMKM</h1>
+           
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!-- ***** Header Text End ***** -->
+
+</div>
+    <!-- ***** Features Small Start ***** -->
+    <section class="section">
         <div class="container">
-            <!-- ***** Section Title Start ***** -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center-heading">
-                        <h2 class="section-title">Informasi toko</h2>
-                    </div>
-                </div>
-                <div class="offset-lg-3 col-lg-6">
-                    <div class="center-text">
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- ***** Section Title End ***** -->
-
-            <div class="row">
-                <!-- ***** Testimonials Item Start ***** -->
-                @foreach($informasi as $i)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="team-item">
-                        <div class="team-content">
-                            <i>{{$i->namaInformasi}}</i>
-                            <p>{{$i->isiInformasi}}</p>
-                            <div class="user-image">
-                               
+                    <div class="row">
+                        @foreach($informasi as $i)
+                        <!-- ***** Features Small Item Start ***** -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                            <a href="/listProduk/{{$i->idUser}}">
+                            <div class="features-small-item">
+                                <div class="icon">
+                                <i class="fa fa-shopping-cart" style="font-size:30px;"></i>
+                                </div>
+                                <h5 class="features-title">{{$i->namaInformasi}}</h5>
+                                <p>{!! $i->isiInformasi !!}</p>
                             </div>
-                            <div class="team-info">
-                                <h3 class="user-name">Catherine Soft</h3>
-                                <span>Managing Director</span>
-                            </div>
+                            </a>
                         </div>
+                        <!-- ***** Features Small Item End ***** -->
+                        @endforeach
                     </div>
                 </div>
-                @endforeach
-                <!-- ***** Testimonials Item End ***** -->
-              
             </div>
         </div>
     </section>
-    <!-- ***** Testimonials End ***** -->
+    <!-- ***** Features Small End ***** -->
+
 @endsection

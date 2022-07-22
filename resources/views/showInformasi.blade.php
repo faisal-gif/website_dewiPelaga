@@ -13,8 +13,8 @@
                   <tr>
                     <th>Tanggal Post</th>
                     <th>Nama Informasi</th>
-                    <th>Jenis Informasi</th>
-                    <th>Isi Informasi</th>
+                    <th>Toko Online</th>
+                    <th>Social Media</th>
                     <th>Action</th>
                     
                   </tr>
@@ -24,8 +24,9 @@
                   <tr>
                     <td>{{$i->created_at}}</td>
                     <td>{{$i->namaInformasi}}</td>
-                    <td>{{$i->jenisInformasi}}</td>
-                    <td>{{$i->isiInformasi}}</td>
+                    <td>{{$i->tokoOnline}}</td>
+                    <td>{{$i->socialMedia}}</td>
+   
                     
                     <td><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit{{$i->id}}">Edit</button> | 
                     <a href="/deleteInformasi/{{$i->id}}" class="btn btn-primary">Delete</a></td>
@@ -54,22 +55,50 @@
               <input type="hidden" name="id" value="{{ $i->id }}" > 
                 @csrf
                 <div class="card-body">
+
                 <div class="form-group row">
-                        <label>Nama Informasi</label>
+                        <label class="col-sm-2 col-form-label">Nama Informasi</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" name="namaInformasi" id="" value="{{$i->namaInformasi}}">
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Jenis Informasi</label>
-                        <select class="form-control select2" name="jenisInformasi">
-                    <option value="pilih" {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}>Pilih</option>
-                  
+                        <label class="col-sm-2 col-form-label">Kategori Toko</label>
+                        <div class="col-sm-9">
+                    <select class="form-control select2" name="jenisInformasi">
+                    <option {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}>UMKM</option>
+                    <option  {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}> Olahraga </option>
+                    <option  {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}> Pendidikan </option>
+                 
                    
                   </select>
-                      </select>
+                  </div>
                         </div>
+                        <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Isi</label>
+                          <div class="col-sm-9">
+                          <textarea class="form-control" id="summernote{{$i->id}}" name="isiInformasi">{{$i->isiInformasi}}</textarea>
+                          </div>                
+                </div>
                 <div class="form-group row">
-                        <label>Isi Informasi</label>
-                        <textarea name="isiInformasi" class="form-control">{{$i->isiInformasi}}</textarea>
+                        <label class="col-sm-2 col-form-label">Toko Online</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="tokoOnline" id="" value="{{$i->tokoOnline}}">
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Social Media</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="socialMedia" id="" value="{{$i->socialMedia}}">
+                        </div>
+                </div>
+               
+                <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Lainnya</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="lainnya" id="" value="{{$i->lainnya}}">
+                        </div>
+                </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -84,4 +113,15 @@
       </div>
       <!-- /.modal -->
       @endforeach
+      
+      @section('script')
+      @foreach($informasi as $i)
+      <script>
+  $('#summernote{{$i->id}}').summernote({
+        height: 300
+    });
+</script>
+@endforeach
+@endsection
+      
 @endsection

@@ -1,6 +1,27 @@
 @extends('layouts.wel')
 
 @section('content')
+ <!-- ***** Welcome Area Start ***** -->
+ <div class="welcome-area" id="welcome">
+@foreach($informasi as $i)
+<!-- ***** Header Text Start ***** -->
+<div class="header-text">
+    <div class="container">
+        <div class="row">
+            <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
+                <h1>{{$i->namaInformasi}}</h1>
+                <p>{!! $i->isiInformasi !!}</p>
+            </div>
+        </div>
+    </div>
+    <a  class="btn btn-primary btn-lg btn-floating"  href="https:\\{{$i->socialMedia}}" role="button"><i class="fa fa-instagram"></i></a>
+    <a  class="btn btn-primary btn-lg btn-floating"  href="https:\\{{$i->tokoOnline}}" role="button"><i class="fa fa-shopping-cart"></i></a>
+                  
+</div>
+<!-- ***** Header Text End ***** -->
+@endforeach
+</div>
+<!-- ***** Welcome Area End ***** -->
 
     <!-- ***** Pricing Plans Start ***** -->
     <section class="section" id="pricing-plans">
@@ -28,8 +49,7 @@
                             <ul class="list">
                                 <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
                                 <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
-                                <li class="active">Keterangan : {{$p->keteranganBarang}}</li>
-                                <li class="active">Stok : {{$p->stok}}</li>
+                                <li class="active">Keterangan : {!! $p->keteranganBarang !!}</li>
                                 <li class="active">Harga : {{$p->hargaBarang}}</li>
                             </ul>
                         </div>

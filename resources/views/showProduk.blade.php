@@ -52,8 +52,9 @@
             <img src="{{ asset($pr->foto) }}" width="340" height="340">
               <p>Nama Barang : {{$pr->namaBarang}}</p>
               <p>Jenis Barang : {{$pr->jenisBarang}}</p>
-              <p>Stok : {{$pr->stok}}</p>
-              <p>Keterangan Barang : {{$pr->keteranganBarang}}</p>
+              <p>Keterangan Barang : {!! $pr->keteranganBarang !!}</p>
+              <p>Harga : {{$pr->hargaBarang}}</p>
+              <p>Informasi Tambahan: {{$pr->informasiLainnya}}</p>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -81,35 +82,44 @@
               <input type="hidden" name="id" value="{{ $pr->id }}" > 
                 @csrf
                 <div class="card-body">
+
                 <div class="form-group row">
-                        <label>Foto Produk</label>
+                        <label class="col-sm-2 col-form-label">Foto Produk</label>
+                        <div class="col-sm-9">
                         <input type="file" class="form-control" name="fotoBarang" id="">
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Nama Produk</label>
+                        <label class="col-sm-2 col-form-label">Nama Produk</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" name="namaBarang" id="" value="{{ $pr->namaBarang}}">
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Jenis Produk</label>
-                        <select class="form-control select2" name="jenisBarang">
-                        <option value="Pilih" {{ $pr->jenisBarang == "Pilih" ? 'selected' : '' }}>Pilih</option>
-                
-                   
-                  </select>
-                      </select>
+                        <label class="col-sm-2 col-form-label">Jenis Produk</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="jenisBarang" id="" value="{{ $pr->jenisBarang}}">
+                        </div>
                         </div>
                 <div class="form-group row">
-                        <label>Keterangan Produk</label>
-                        <textarea name="keteranganBarang" class="form-control">{{ $pr->keteranganBarang}}</textarea>
+                        <label class="col-sm-2 col-form-label">Keterangan Produk</label>
+                        <div class="col-sm-9">
+                        <textarea name="keteranganBarang" id="summernote{{$pr->id}}" class="form-control">{{$pr->keteranganBarang}}</textarea>
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Stok</label>
-                        <input type="number" class="form-control" name="stok" id="" value="{{ $pr->stok}}">
+                        <label class="col-sm-2 col-form-label">Harga</label>
+                        <div class="col-sm-9">
+                        <input type="number" class="form-control" name="harga" id="" value="{{ $pr->hargaBarang}}">
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Harga</label>
-                        <input type="number" class="form-control" name="stok" id="" value="{{ $pr->hargaBarang}}">
+                        <label class="col-sm-2 col-form-label">Informasi Tambahan</label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" name="informasiLainnya" id="" value="{{ $pr->informasiLainnya}}">
+                        </div>
                 </div>
+               
                 </div>
                 <!-- /.card-body -->
 
@@ -126,4 +136,14 @@
       </form>
       <!-- /.modal -->
       @endforeach
+@endsection
+
+@section('script')
+      @foreach($produk as $p)
+      <script>
+  $('#summernote{{$p->id}}').summernote({
+        height: 300
+    });
+</script>
+@endforeach
 @endsection

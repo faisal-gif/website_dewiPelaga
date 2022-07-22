@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pengabdian Website</title>
+  <title>Dewi Plaga</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{{ asset('adminLte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('adminLte/plugins/summernote/summernote-bs4.min.css')}}">
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -61,7 +62,7 @@
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
         
-        <span class="brand-text font-weight-light">Pengabdian Website</span>
+        <span class="brand-text font-weight-light">Dewi Plaga Website</span>
       </a>
 
       <!-- Sidebar -->
@@ -92,24 +93,27 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
-                Manage Informasi
+                Manage Profile
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
+              @if(Gate::check('toko'))
                 <li class="nav-item">
                   <a href="/formInformasi" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Input Informasi</p>
                   </a>
                 </li>
-
+                @endif
+                @if(Gate::check('admin'))
                 <li class="nav-item">
                   <a href="/showInformasi" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Show Informasi</p>
                   </a>
                 </li>
+                @endif
               </ul>
             </li>
 
@@ -123,22 +127,33 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
+              @if(Gate::check('toko'))
                 <li class="nav-item">
                   <a href="/formPosting" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Input Posting</p>
                   </a>
                 </li>
-
+                @endif
+                @if(Gate::check('toko'))
                 <li class="nav-item">
                   <a href="/showPosting" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Show Posting</p>
                   </a>
                 </li>
+                @endif
+                @if(Gate::check('admin'))
+                <li class="nav-item">
+                  <a href="/filterPosting" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Filter Posting</p>
+                  </a>
+                </li>
+                @endif
               </ul>
             </li>
-
+            @if(Gate::check('toko'))
             <li class="nav-header">Produk</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -164,6 +179,7 @@
                 </li>
               </ul>
             </li>
+            @endif
             <li class="nav-header">Log Out</li>
             <li class="nav-item">
                                     
@@ -187,15 +203,6 @@
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Dashboard v2</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v2</li>
-              </ol>
-            </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
@@ -273,6 +280,7 @@
 <script src="{{ asset('adminLte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{ asset('adminLte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{ asset('adminLte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{ asset('adminLte/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -290,6 +298,13 @@
     });
   });
 </script>
+<script>
+  $('#summernote').summernote({
+        height: 300
+    });
+</script>
+@yield('script')
+
 </body>
 
 </html>

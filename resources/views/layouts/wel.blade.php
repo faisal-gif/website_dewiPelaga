@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
 
-    <title>Pengabdian</title>
+    <title>Dewi Plaga</title>
 <!--
 SOFTY PINKO
 https://templatemo.com/tm-535-softy-pinko
@@ -39,10 +39,15 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                        <li><a href="/" class="active">Home</a></li>
-                            <li><a href="/listPosting">Postingan Social Media</a></li>
-                            <li><a href="/listProduk">Barang Yang Dijual</a></li>
-                            <li><a href="listInformasi">Informasi Toko</a></li>
+                            <li><a href="/" class="active">Home</a></li>
+                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/listInformasi/UMKM">UMKM</a>
+                                <a class="dropdown-item" href="/listInformasi/Olahraga">Olahraga</a>
+                                <a class="dropdown-item" href="/listInformasi/Pendidikan">Pendidikan</a>
+                                <a class="dropdown-item" href="/listInformasi/Pariwisata">Pariwisata</a>
+                            </div>
+                            </li>
                             <li><a href="/register">Daftar</a></li>
                             <li><a href="/login">Login</a></li>
                         </ul>
@@ -58,9 +63,6 @@ https://templatemo.com/tm-535-softy-pinko
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
-    </div>
-    <!-- ***** Welcome Area End ***** -->
 
     @yield('content')
    

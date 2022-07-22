@@ -24,7 +24,7 @@
                         <h2 class="section-title">{{$p->namaPosting}}</h2>
                     </div>
                     <div class="left-text">
-                        <p>{{$p->isiPosting}}</p>
+                        <p>{!! $p->isiPosting !!}</p>
                     </div>
                 </div>
     @endforeach

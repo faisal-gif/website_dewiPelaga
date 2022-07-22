@@ -21,7 +21,7 @@ class CreateProduksTable extends Migration
             $table->text('keteranganBarang');
             $table->integer('hargaBarang');
             $table->string('foto');
-            $table->integer('stok');
+            $table->text('informasiLainnya')->nullable();
             $table->timestamps();
         });
     }

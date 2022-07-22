@@ -5,6 +5,7 @@ use App\User;
 use App\produk;
 use App\posting;
 use App\informasi;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('welcome','listProduk','listPosting','listInformasi','detailProduk');
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('admin')||Gate::allows('toko')) {
+                return $next($request);
+            }
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        })->except('welcome','listProduk','listPosting','listInformasi','detailProduk','detailPosting');
     }
 
     /**
@@ -38,27 +44,28 @@ class HomeController extends Controller
         $produk=produk::where('id',$id)->get();
         return view('detailProduk',compact('produk'));
     }
-    public function listProduk()
+    public function listProduk($idUser)
     {
-        $produk=produk::all();
-        return view('listProduk',compact('produk'));
+        $produk=produk::where('idUser',$idUser)->get();
+        $informasi=informasi::where('idUser',$idUser)->get();
+        return view('listProduk',compact('produk','informasi'));
+       
     }
-    public function listPosting()
+    public function listPosting($idUser)
     {
-        $posting=posting::all();
-        return view('listPosting',compact('posting'));
+        $posting=posting::where('idUser',$idUser)->where('status','setuju')->get();
+        return view('listPosting',compact('posting','informasi'));
     }
-    public function listInformasi()
+    public function listInformasi($jenis)
     {
-        $informasi=informasi::all();
+        $informasi=informasi::where('jenisInformasi',$jenis)->get();
         return view('listInformasi',compact('informasi'));
     }
     public function welcome()
     {
-        $user=User::all();
         $produk=produk::all();
-        $posting=posting::all();
+        $posting=posting::where('status','setuju')->get();
         $informasi=informasi::all();
-        return view('welcome',compact('user','produk','posting','informasi'));
+        return view('welcome',compact('produk','posting','informasi'));
     }
 }

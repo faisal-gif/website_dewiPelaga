@@ -1,7 +1,7 @@
 @extends('layouts.lay')
 
 @section('content')
-<div class="col-md-5">
+<div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
@@ -14,25 +14,28 @@
                 @csrf
                 <div class="card-body">
                 <div class="form-group row">
-                        <label>Foto Posting</label>
+                        <label class="col-sm-2 col-form-label">Foto Posting</label>
+                        <div class="col-sm-9">
                         <input type="file" class="form-control" name="fotoPosting" id="">
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Nama Posting</label>
+                        <label class="col-sm-2 col-form-label">Nama Posting</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" name="namaPosting" id="">
+                        </div>
                 </div>
                 <div class="form-group row">
-                        <label>Isi Posting</label>
-                        <textarea name="isiPosting" class="form-control"></textarea>
-                </div>
-
-               
-               
+                <label class="col-sm-2 col-form-label">Isi</label>
+                          <div class="col-sm-9">
+                          <textarea class="form-control" id="summernote" name="isiPosting"></textarea>
+                          </div>                
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary">Save Beranda</button>
                 </div>
               </form>
             </div>

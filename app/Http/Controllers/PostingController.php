@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\posting;
-
+use Auth;
 class PostingController extends Controller
 {
     public function __construct()
@@ -22,21 +22,48 @@ class PostingController extends Controller
         return view('inputPosting');
     }
     public function showPosting()
+    { 
+        $auth=auth()->user()->id;
+        $posting=posting::where('idUser',$auth)->get();
+        return view('showPosting', compact('posting'));
+    }
+    public function filterPosting()
     {
         $posting=posting::all();
-        return view('showPosting',compact('posting'));
+        return view('filterPosting', compact('posting'));
     }
     public function prosesInput(Request $request)
     {
         $file = $request->file('fotoPosting');
 
         $filename = time().'.'.$file->getClientOriginalExtension();
-        $path = $file->move('fotoPosting',$filename);
+
+        $path = $file->move('fotoPosting', $filename);
+        $content = $request->isiPosting;
+        $dom = new \DomDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
+  
+        foreach ($imageFile as $item => $image) {
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $imgeData = base64_decode($data);
+            $image_name= "/upload/" . time().$item.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+            
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+        }
+  
+        $content = $dom->saveHTML();
         $add=new posting([
             'idUser' =>$request->input('idUser'),
             'namaPosting' => $request->input('namaPosting'),
             'jenisPosting' => $request->input('jenisPosting'),
-            'isiPosting' => $request->input('isiPosting'),
+            'isiPosting' => $content,
+            'status' => 'Tunggu',
             'fotoPosting' => $path
           
 
@@ -46,17 +73,43 @@ class PostingController extends Controller
     }
     public function prosesUpdate(Request $request)
     {
-        $update=posting::where('id',$request->input('id'))->first();
+        $update=posting::where('id', $request->input('id'))->first();
+        $content = $request->isiPosting;
+        $dom = new \DomDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
+
+        foreach ($imageFile as $item => $image) {
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $imgeData = base64_decode($data);
+            $image_name= "/upload/" . time().$item.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+        
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+        }
+
+        $content = $dom->saveHTML();
         $update->namaPosting = $request->input('namaPosting');
         $update->jenisPosting = $request->input('jenisPosting');
-        $update->isiPosting = $request->input('isiPosting');
+        $update->isiPosting =  $content;
         $update->save();
         return redirect('/showPosting');
     }
     public function prosesDelete($id)
     {
-        $update=posting::where('id',$id)->delete();
+        $update=posting::where('id', $id)->delete();
         return redirect('/showPosting');
     }
+    public function prosesPersetujuan(Request $request)
+    {
+        $id=$request->input('id');
+        $update=posting::where('id', $id)->first();
+        $update->status=$request->input('status');
+        $update->save();
+        return redirect()->back();
+    }
 }
-

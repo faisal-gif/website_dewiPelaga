@@ -14,7 +14,8 @@
                     <th>Tanggal Post</th>
                     <th>Nama Posting</th>
                     <th>Detail</th>
-                    <th>Action</th>
+                    <th>Status</th>
+                    <th>Persetujuan</th>
                     
                   </tr>
                   </thead>
@@ -24,8 +25,28 @@
                     <td>{{$p->created_at}}</td>
                     <td>{{$p->namaPosting}}</td>
                     <td><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-details{{$p->id}}">Details</button></td>
-                    <td><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-edit{{$p->id}}">Edit</button> | 
-                    <a href="/deletePosting/{{$p->id}}" class="btn btn-primary">Delete</a></td>
+                    <td>
+                    @if($p->status === 'setuju')
+                          <a class="btn btn-success btn-sm" href="#">
+                           Setuju
+                          </a>
+                          @elseif($p->status === 'tolak')
+                          <a class="btn btn-danger btn-sm" href="#">
+                           Tolak
+                          </a>
+                          @else
+                          <a class="btn btn-secondary btn-sm" href="#">
+                           Tunggu
+                          </a>
+                          @endif
+                    </td>
+                    
+                    <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#persetujuanModal{{$p->id}}">
+                          <i class="fa fa-paper-plane"></i>
+                          </button>
+                    </td>
+                   
                   </tr>
                   @endforeach
                   </tbody>
@@ -53,6 +74,7 @@
               <p>Nama Posting : {{$p->namaPosting}}</p>
               <p>Isi Posting : {!! $p->isiPosting !!}</p>
             </div>
+            
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
@@ -63,69 +85,42 @@
       </div>
       <!-- /.modal -->
 
-      <!-- /.modal -->
-      <form class="form-horizontal" action="/insertPosting" method="POST" enctype="multipart/form-data">
-      <div class="modal fade" id="modal-edit{{$p->id}}">
+      <div class="modal fade" id="persetujuanModal{{$p->id}}">
+        <form action="/prosesFilter" method="post">
+        @csrf
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Posting</h4>
+              <h4 class="modal-title">Persetujuan Posting</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <input type="hidden" name="idUser" value="{{ Auth::user()->id }}" > 
-              <input type="hidden" name="id" value="{{ $p->id }}" > 
-                @csrf
-                <div class="card-body">
-
-                <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Foto Posting</label>
+            <div class="form-group row">
+              <input type="hidden" name="id" value="{{$p->id}}">
+                        <label class="col-sm-2 col-form-label">Persetujuan</label>
                         <div class="col-sm-9">
-                        <input type="file" class="form-control" name="fotoPosting" id="">
+                    <select class="form-control select2" name="status">
+                    <option {{ optional($p)->status == "setuju" ? 'selected' : '' }} >setuju</option>
+                    <option  {{ optional($p)->status == "tolak" ? 'selected' : '' }}> tolak </option>
+                  </select>
+                  </div>
                         </div>
-                </div>
-                <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Posting</label>
-                        <div class="col-sm-9">
-                        <input type="text" class="form-control" name="namaPosting" id="" value="{{ $p->namaPosting }}">
-                        </div>
-                </div>
-                <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Isi</label>
-                          <div class="col-sm-9">
-                          <textarea class="form-control" id="summernote{{$p->id}}" name="isiPosting">{{ $p->isiPosting }}</textarea>
-                          </div>                
-                </div>
-                </div>
-                <!-- /.card-body -->
-
-               
-                
             </div>
+            
             <div class="modal-footer justify-content-between">
+              <button type="submit" class="btn btn-default" >Save</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save</button>
             </div>
           </div>
           <!-- /.modal-content -->
+          </form>
         </div>
         <!-- /.modal-dialog -->
       </div>
-      </form>
-
       <!-- /.modal -->
-      @endforeach
-      
-@endsection
 
-@section('script')
-      @foreach($posting as $p)
-      <script>
-  $('#summernote{{$p->id}}').summernote({
-        height: 300
-    });
-</script>
-@endforeach
+
+      @endforeach
 @endsection
