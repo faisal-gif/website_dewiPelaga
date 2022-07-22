@@ -35,7 +35,6 @@
                         <p><h6>Lainnya : </h6>{{$p->lainnya}}</p>
                     </div>
                     <div class="left-text">
-                       <a href="#" class="main-button">Wishlist</a>
                        <a href="#" class="main-button">Beli</a>
                     </div>
                 </div>

@@ -35,23 +35,28 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" >
-                        
-                            <img src="{{ asset('logo.png')}}" alt="Pengabdian" width="90"/>
+                        <a href="#">
+                        <img src="{{ asset('logo.png')}}" alt="Pengabdian" width="90" height="90"/>
                         </a>
+                            
+                        
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="#welcome" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                         
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li class="dropdown-item"><a href="/listInformasi/UMKM">UMKM</a></li>
-                            <li class="dropdown-item"><a href="/listInformasi/Olahraga">Olahraga</a></li>
-                            <li class="dropdown-item"><a href="/listInformasi/Pendidikan">Pendidikan</a></li>
-                            <li class="dropdown-item"><a href="/listInformasi/Pariwisata">Pariwisata</a></li>
-                            </ul>
-                            </li>
+                        <ul class="nav">
+                            
+                            <li><a href="#welcome" class="active">Home</a></li>
+                            <li>
+                            <div class="dropdown">
+                            <button class="btn btn-default" type="button" data-toggle="dropdown">Kategori</button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/listInformasi/UMKM">UMKM</a></li>
+                                    <li><a href="/listInformasi/Olahraga">Olahraga</a></li>
+                                    <li><a href="/listInformasi/Pendidikan">Pendidikan</a></li>
+                                    <li><a href="/listInformasi/Pariwisata">Pariwisata</a></li>
+                                </ul>
+                            </div>
+                        </li>
                            
                             <li><a href="/register">Daftar</a></li>
                             <li><a href="/login">Login</a></li>

@@ -40,14 +40,17 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="/" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="/listInformasi/UMKM">UMKM</a>
-                                <a class="dropdown-item" href="/listInformasi/Olahraga">Olahraga</a>
-                                <a class="dropdown-item" href="/listInformasi/Pendidikan">Pendidikan</a>
-                                <a class="dropdown-item" href="/listInformasi/Pariwisata">Pariwisata</a>
+                            <li>
+                            <div class="dropdown">
+                            <button class="btn btn-default" type="button" data-toggle="dropdown">Kategori</button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/listInformasi/UMKM">UMKM</a></li>
+                                    <li><a href="/listInformasi/Olahraga">Olahraga</a></li>
+                                    <li><a href="/listInformasi/Pendidikan">Pendidikan</a></li>
+                                    <li><a href="/listInformasi/Pariwisata">Pariwisata</a></li>
+                                </ul>
                             </div>
-                            </li>
+                        </li>
                             <li><a href="/register">Daftar</a></li>
                             <li><a href="/login">Login</a></li>
                         </ul>
