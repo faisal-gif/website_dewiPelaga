@@ -18,7 +18,6 @@ class CreatePostingsTable extends Migration
             $table->integer('idUser');
             $table->string('fotoPosting');
             $table->string('namaPosting');
-            $table->string('jenisPosting');
             $table->text('isiPosting');
             $table->timestamps();
         });

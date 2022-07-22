@@ -16,6 +16,7 @@ class CreateInformasiTable extends Migration
         Schema::create('informasis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('idUser');
+            $table->string('jenisInformasi');
             $table->string('namaInformasi');
             $table->text('isiInformasi');
             $table->timestamps();
