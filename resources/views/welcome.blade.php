@@ -43,7 +43,7 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="#welcome" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                         
                             <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/listInformasi/UMKM">UMKM</a>
