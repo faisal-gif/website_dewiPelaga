@@ -43,9 +43,9 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="#welcome" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
+                            <li class="dropdown"><a href="#" id="dropdownMenuButton" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">Kategori</a>
                         
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="/listInformasi/UMKM">UMKM</a>
                                 <a class="dropdown-item" href="/listInformasi/Olahraga">Olahraga</a>
                                 <a class="dropdown-item" href="/listInformasi/Pendidikan">Pendidikan</a>
@@ -92,7 +92,7 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="col-lg-12">
                     <div class="row">
                         <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                        <div class="col-lg-3 col-md-5 col-sm-5 col-11" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
                         <a href="/listInformasi/UMKM">    
                         <div class="features-small-item">
                                 <div class="icon">
@@ -106,7 +106,7 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Features Small Item End ***** -->
 
                         <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
+                        <div class="col-lg-3 col-md-5 col-sm-5 col-11" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
                         <a href="/listInformasi/Olahraga">    
                         <div class="features-small-item">
                                 <div class="icon">
@@ -120,7 +120,7 @@ https://templatemo.com/tm-535-softy-pinko
                         <!-- ***** Features Small Item End ***** -->
 
                         <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                        <div class="col-lg-3 col-md-5 col-sm-5 col-11" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
                         <a href="/listInformasi/Pendidikan">
                             <div class="features-small-item">
                                 <div class="icon">
@@ -133,7 +133,7 @@ https://templatemo.com/tm-535-softy-pinko
                         </div>
                         <!-- ***** Features Small Item End ***** -->
                         <!-- ***** Features Small Item Start ***** -->
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
+                        <div class="col-lg-3 col-md-5 col-sm-5 col-11" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
                         <a href="/listInformasi/Pariwisata">
                             <div class="features-small-item">
                                 <div class="icon">
