@@ -29,11 +29,11 @@ class ProdukController extends Controller
     }
     public function prosesInput(Request $request)
     {
-        $file = $request->file('fotoBarang');
-
-        $filename = time().'.'.$file->getClientOriginalExtension();
-        $path = $file->move('fotoBarang', $filename);
-
+        $image = $request->file('fotoBarang');
+        $result = " ";
+        if ($image != null) {
+            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+        }
         $content = $request->keteranganBarang;
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -60,7 +60,7 @@ class ProdukController extends Controller
             'keteranganBarang' => $content,
             'hargaBarang' =>  $request->input('harga'),
             'informasiLainnya' =>  $request->input('informasiLainnya'),
-            'foto' => $path
+            'foto' =>  $result
           
 
         ]);
@@ -70,6 +70,12 @@ class ProdukController extends Controller
     public function prosesUpdate(Request $request)
     {
         $update=produk::where('id', $request->input('id'))->first();
+        $image = $request->file('fotoBarang');
+        $result = " ";
+        if ($image != null) {
+            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+            $update->foto = $result;
+        }
         $content = $request->keteranganBarang;
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -87,7 +93,7 @@ class ProdukController extends Controller
             $image->removeAttribute('src');
             $image->setAttribute('src', $image_name);
         }
-  
+        
         $content = $dom->saveHTML();
         $update->namaBarang = $request->input('namaBarang');
         $update->jenisBarang = $request->input('jenisBarang');

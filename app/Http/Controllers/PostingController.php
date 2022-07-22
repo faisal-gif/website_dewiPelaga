@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\posting;
 use Auth;
+
 class PostingController extends Controller
 {
     public function __construct()
@@ -22,9 +23,9 @@ class PostingController extends Controller
         return view('inputPosting');
     }
     public function showPosting()
-    { 
+    {
         $auth=auth()->user()->id;
-        $posting=posting::where('idUser',$auth)->get();
+        $posting=posting::where('idUser', $auth)->get();
         return view('showPosting', compact('posting'));
     }
     public function filterPosting()
@@ -34,11 +35,11 @@ class PostingController extends Controller
     }
     public function prosesInput(Request $request)
     {
-        $file = $request->file('fotoPosting');
-
-        $filename = time().'.'.$file->getClientOriginalExtension();
-
-        $path = $file->move('fotoPosting', $filename);
+        $image = $request->file('fotoPosting');
+        $result = " ";
+        if ($image != null) {
+            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+        }
         $content = $request->isiPosting;
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -64,7 +65,7 @@ class PostingController extends Controller
             'jenisPosting' => $request->input('jenisPosting'),
             'isiPosting' => $content,
             'status' => 'Tunggu',
-            'fotoPosting' => $path
+            'fotoPosting' => $result
           
 
         ]);
@@ -74,6 +75,13 @@ class PostingController extends Controller
     public function prosesUpdate(Request $request)
     {
         $update=posting::where('id', $request->input('id'))->first();
+        $image = $request->file('fotoPosting');
+        $result = " ";
+        if ($image != null) {
+            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+            $update->fotoPosting =  $result;
+        }
+        
         $content = $request->isiPosting;
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -94,7 +102,6 @@ class PostingController extends Controller
 
         $content = $dom->saveHTML();
         $update->namaPosting = $request->input('namaPosting');
-        $update->jenisPosting = $request->input('jenisPosting');
         $update->isiPosting =  $content;
         $update->save();
         return redirect('/showPosting');

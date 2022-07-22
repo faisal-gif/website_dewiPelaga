@@ -64,7 +64,7 @@
       <!-- /.modal -->
 
       <!-- /.modal -->
-      <form class="form-horizontal" action="/insertPosting" method="POST" enctype="multipart/form-data">
+      <form class="form-horizontal" action="/updatePosting" method="POST" enctype="multipart/form-data">
       <div class="modal fade" id="modal-edit{{$p->id}}">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">

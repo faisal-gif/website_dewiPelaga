@@ -110,7 +110,7 @@
                 <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Harga</label>
                         <div class="col-sm-9">
-                        <input type="number" class="form-control" name="harga" id="" value="{{ $pr->hargaBarang}}">
+                        <input type="number" class="form-control" name="hargaBarang" id="" value="{{ $pr->hargaBarang}}">
                         </div>
                 </div>
                 <div class="form-group row">
