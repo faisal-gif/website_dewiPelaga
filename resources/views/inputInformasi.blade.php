@@ -16,15 +16,20 @@
                 <div class="card-body">
                 
                 <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Informasi</label>
+                        <label class="col-sm-2 col-form-label">Nama Informasi <span class="text-danger">*</span> </label>
                         <div class="col-sm-9">
-                        <input type="text" class="form-control" name="namaInformasi" id="" value="{{optional($i)->namaInformasi}}">
+                        <input type="text" class="form-control @error('namaInformasi') is-invalid @enderror" name="namaInformasi" id="" value="{{optional($i)->namaInformasi}}">
+                        @error('namaInformasi')
+                          <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
                         </div>
                 </div>
                 <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Kategori Toko</label>
+                        <label class="col-sm-2 col-form-label">Kategori Toko <span class="text-danger">*</span> </label>
                         <div class="col-sm-9">
-                    <select class="form-control select2" name="jenisInformasi">
+                    <select class="form-control select2 @error('jenisInformasi') is-invalid @enderror" name="jenisInformasi">
                     <option {{ optional($i)->jenisInformasi == "UMKM" ? 'selected' : '' }} >UMKM</option>
                     <option  {{ optional($i)->jenisInformasi == "Olahraga" ? 'selected' : '' }}> Olahraga </option>
                     <option  {{ optional($i)->jenisInformasi == "Pendidikan" ? 'selected' : '' }}> Pendidikan </option>
@@ -32,13 +37,23 @@
                  
                    
                   </select>
+                  @error('jenisInformasi')
+                          <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
                   </div>
                         </div>
                         <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Isi</label>
+                <label class="col-sm-2 col-form-label">Isi <span class="text-danger">*</span> </label>
                           <div class="col-sm-9">
-                          <textarea class="form-control" id="summernote" name="isiInformasi">{{optional($i)->isiInformasi}}</textarea>
-                          </div>                
+                          <textarea class="form-control @error('isiInformasi') is-invalid @enderror" id="summernote" name="isiInformasi">{{optional($i)->isiInformasi}}</textarea>
+                          @error('isiInformasi')
+                          <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror  
+                        </div>                
                 </div>
                 <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Toko Online</label>
@@ -47,7 +62,7 @@
                         </div>
                 </div>
                 <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Social Media</label>
+                        <label class="col-sm-2 col-form-label">Social Media </label>
                         <div class="col-sm-9">
                         <input type="text" class="form-control" name="socialMedia" id="" value="{{optional($i)->socialMedia}}">
                         </div>

@@ -47,6 +47,11 @@
                         <div class="pricing-body">
                          
                             <ul class="list">
+                            @if($p->foto == null)
+                                <li class="active"><img src="{{ asset('logo.png')}}" alt="" width="280"></li>
+                                @else
+                                <li class="active"><img src="{{$p->foto}}" alt="" width="280"></li>
+                                @endif
                                 <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
                                 <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
                                 <li class="active">Keterangan : {!! $p->keteranganBarang !!}</li>
@@ -83,8 +88,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
                 <a href="/detailPosting/{{$p->id}}">
                             <div class="features-small-item">
-                                <img src="{{$p->fotoPosting}}" alt="" width="200"></i>
-                                
+                            @if($p->fotoPosting == null)
+                                <img src="{{ asset('logo.png')}}" alt="" width="200">
+                                @endif
+                                <img src="{{$p->fotoPosting}}" alt="" width="200">
                                 <h6 class="features-title">{{$p->namaPosting}}</h6>
                                 <p>{!! $p->isiPosting !!}</p>
                             </div>

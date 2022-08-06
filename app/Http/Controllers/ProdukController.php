@@ -29,6 +29,23 @@ class ProdukController extends Controller
     }
     public function prosesInput(Request $request)
     {
+        $rules = [
+            'namaBarang' => 'required|',
+            'fotoPosting' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'jenisBarang' => 'required|',
+            'harga' => 'required|',
+            'keteranganBarang' => 'string|max:255',
+        ];
+        $messages = [
+            'namaBarang.required' => 'Nama wajib diisi',
+            'jenisBarang.required' => 'Jenis wajib diisi',
+            'harga.required' => 'Harga wajib diisi',
+            'fotoPosting.image' => 'Foto harus gambar',
+            'fotoPosting.mimes' => 'Foto harus bertipe: jpeg,png,jpg,gif,svg',
+            'fotoPosting.max' => 'Foto maksimal 2mb',
+        ];
+        $request->validate($rules, $messages);
+
         $image = $request->file('fotoBarang');
         $result = " ";
         if ($image != null) {

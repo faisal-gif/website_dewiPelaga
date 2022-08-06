@@ -180,8 +180,11 @@ https://templatemo.com/tm-535-softy-pinko
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
                 <a href="/detailPosting/{{$p->id}}">
                             <div class="features-small-item">
-                                <img src="{{$p->fotoPosting}}" alt="" width="200"></i>
-                                
+                                @if($p->fotoPosting == null)
+                                <img src="{{ asset('logo.png')}}" alt="" width="200">
+                                @else
+                                <img src="{{$p->fotoPosting}}" alt="" width="200">
+                                @endif
                                 <h6 class="features-title">{{$p->namaPosting}}</h6>
                                 <p>{!! $p->isiPosting !!}</p>
                             </div>

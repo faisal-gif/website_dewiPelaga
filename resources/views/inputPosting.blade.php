@@ -16,13 +16,24 @@
                 <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Foto Posting</label>
                         <div class="col-sm-9">
-                        <input type="file" class="form-control" name="fotoPosting" id="">
+                        <input type="file" class="form-control @error('fotoPosting') is-invalid @enderror" name="fotoPosting" id="">
+                        @error('fotoPosting')
+                          <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
+                        <span class="text-secondary">Minimal Ukuran File 2MB</span>
                         </div>
                 </div>
                 <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nama Posting</label>
+                        <label class="col-sm-2 col-form-label">Nama Posting <span class="text-danger">*</span> </label>
                         <div class="col-sm-9">
-                        <input type="text" class="form-control" name="namaPosting" id="">
+                        <input type="text" class="form-control @error('namaPosting') is-invalid @enderror" name="namaPosting" id="">
+                          @error('namaPosting')
+                          <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                          </span>
+                          @enderror
                         </div>
                 </div>
                 <div class="form-group row">

@@ -35,6 +35,20 @@ class PostingController extends Controller
     }
     public function prosesInput(Request $request)
     {
+        $rules = [
+            'namaPosting' => 'required|',
+            'fotoPosting' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'isiPosting' => 'string|max:255',
+        ];
+        $messages = [
+            'namaPosting.required' => 'Nama wajib diisi',
+            'isiPosting' => 'Isi wajib diisi',
+            'fotoPosting.image' => 'Foto harus gambar',
+            'fotoPosting.mimes' => 'Foto harus bertipe: jpeg,png,jpg,gif,svg',
+            'fotoPosting.max' => 'Foto maksimal 2mb',
+        ];
+        $request->validate($rules, $messages);
+
         $image = $request->file('fotoPosting');
         $result = " ";
         if ($image != null) {
@@ -62,7 +76,6 @@ class PostingController extends Controller
         $add=new posting([
             'idUser' =>$request->input('idUser'),
             'namaPosting' => $request->input('namaPosting'),
-            'jenisPosting' => $request->input('jenisPosting'),
             'isiPosting' => $content,
             'status' => 'Tunggu',
             'fotoPosting' => $result
@@ -74,6 +87,7 @@ class PostingController extends Controller
     }
     public function prosesUpdate(Request $request)
     {
+        
         $update=posting::where('id', $request->input('id'))->first();
         $image = $request->file('fotoPosting');
         $result = " ";

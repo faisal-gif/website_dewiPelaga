@@ -32,6 +32,18 @@ class InformasiController extends Controller
     }
     public function prosesInput(Request $request)
     {
+        $rules = [
+            'namaInformasi' => 'required|',
+            'jenisInformasi' => 'required|',
+            'isiInformasi' => 'required|string|max:255',
+        ];
+        $messages = [
+            'namaInformasi.required' => 'Nama wajib diisi',
+            'isiInformasi.required' => 'Isi wajib diisi',
+            'jenisInformasi.required' => 'Jenis wajib diisi',
+        ];
+        $request->validate($rules, $messages);
+
         $update=informasi::where('id', $request->input('id'))->first();
         $content = $request->isiInformasi;
         $dom = new \DomDocument();
