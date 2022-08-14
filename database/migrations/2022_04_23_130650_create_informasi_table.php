@@ -19,8 +19,8 @@ class CreateInformasiTable extends Migration
             $table->string('jenisInformasi');
             $table->string('namaInformasi');
             $table->text('isiInformasi');
-            $table->string('tokoOnline');
-            $table->string('socialMedia');
+            $table->string('tokoOnline')->nullable();
+            $table->string('socialMedia')->nullable();
             $table->string('lainnya')->nullable();
             $table->timestamps();
         });

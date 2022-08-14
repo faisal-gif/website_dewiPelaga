@@ -16,9 +16,9 @@ class CreatePostingsTable extends Migration
         Schema::create('postings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('idUser');
-            $table->string('fotoPosting');
+            $table->string('fotoPosting')->nullable();
             $table->string('namaPosting');
-            $table->text('isiPosting');
+            $table->text('isiPosting')->nullable();
             $table->string('status');
             $table->timestamps();
         });
