@@ -228,7 +228,7 @@ https://templatemo.com/tm-535-softy-pinko
                                 <i class="fa fa-shopping-cart" style="font-size:30px;"></i>
                                 </div>
                                 <h5 class="features-title">{{$i->namaInformasi}}</h5>
-                                <p>{!! substr(htmlspecialchars_decode($i->isiInformasi),0,50)!!}</p>
+                                <p>{!! substr($i->isiInformasi,0,50)!!}</p>
                             </div>
                             </a>
                         </div>
