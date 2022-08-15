@@ -21,7 +21,11 @@
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="blog-post-thumb">
                         <div class="img">
-                            <img src="{{$p->fotoPosting}}" alt="" width="300" height="200">
+                        @if($p->fotoPosting == null)
+                                <img src="{{ asset('default.png')}}" alt="" width="200">
+                                @else
+                                <img src="{{$p->fotoPosting}}" alt="" width="200">
+                                @endif
                         </div>
                         <div class="blog-content">
                             <h3>

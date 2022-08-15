@@ -181,12 +181,12 @@ https://templatemo.com/tm-535-softy-pinko
                 <a href="/detailPosting/{{$p->id}}">
                             <div class="features-small-item">
                                 @if($p->fotoPosting == null)
-                                <img src="{{ asset('logo.png')}}" alt="" width="200">
+                                <img src="{{ asset('default.png')}}" alt="" width="200">
                                 @else
                                 <img src="{{$p->fotoPosting}}" alt="" width="200">
                                 @endif
                                 <h6 class="features-title">{{$p->namaPosting}}</h6>
-                                <p>{!! $p->isiPosting !!}</p>
+                                <p>{!!\Illuminate\Support\Str::limit(htmlspecialchars_decode($p->isiPosting),50,"...")!!}</p>
                             </div>
                 </a>
                         </div>

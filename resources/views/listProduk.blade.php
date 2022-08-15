@@ -48,7 +48,7 @@
                          
                             <ul class="list">
                             @if($p->foto == null)
-                                <li class="active"><img src="{{ asset('logo.png')}}" alt="" width="280"></li>
+                                <li class="active"><img src="{{ asset('default.png')}}" alt="" width="280"></li>
                                 @else
                                 <li class="active"><img src="{{$p->foto}}" alt="" width="280"></li>
                                 @endif
@@ -89,7 +89,7 @@
                 <a href="/detailPosting/{{$p->id}}">
                             <div class="features-small-item">
                             @if($p->fotoPosting == null)
-                                <img src="{{ asset('logo.png')}}" alt="" width="200">
+                                <img src="{{ asset('default.png')}}" alt="" width="200">
                                 @endif
                                 <img src="{{$p->fotoPosting}}" alt="" width="200">
                                 <h6 class="features-title">{{$p->namaPosting}}</h6>
