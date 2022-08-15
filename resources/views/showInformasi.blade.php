@@ -77,7 +77,7 @@
                         <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Isi</label>
                           <div class="col-sm-9">
-                          <textarea class="form-control" id="summernote{{$i->id}}" name="isiInformasi">{{$i->isiInformasi}}</textarea>
+                          <textarea class="form-control" name="isiInformasi">{{$i->isiInformasi}}</textarea>
                           </div>                
                 </div>
                 <div class="form-group row">
@@ -114,14 +114,6 @@
       <!-- /.modal -->
       @endforeach
       
-      @section('script')
-      @foreach($informasi as $i)
-      <script>
-  $('#summernote{{$i->id}}').summernote({
-        height: 300
-    });
-</script>
-@endforeach
 @endsection
       
 @endsection
