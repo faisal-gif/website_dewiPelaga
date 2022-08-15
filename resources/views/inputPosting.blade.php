@@ -37,7 +37,7 @@
                         </div>
                 </div>
                 <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Isi</label>
+                <label class="col-sm-2 col-form-label">Isi <span class="text-danger">*</span></label>
                           <div class="col-sm-9">
                           <textarea class="form-control" id="summernote" name="isiPosting"></textarea>
                           </div>                
