@@ -49,7 +49,11 @@
               </button>
             </div>
             <div class="modal-body">
-              <img src="{{ asset($p->fotoPosting) }}" width="340" height="340">
+            @if($p->fotoPosting == " " || $p->fotoPosting == null)
+            <p><img src="{{ asset('default.png')}}" alt="" width="200"></p>
+                                @else
+            <p><img src="{{$p->fotoPosting}}" alt="" width="200"></p>
+                                @endif
               <p>Nama Posting : {{$p->namaPosting}}</p>
               <p>Isi Posting : {!! $p->isiPosting !!}</p>
             </div>

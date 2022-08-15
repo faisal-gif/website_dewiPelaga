@@ -87,7 +87,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s">
                 <a href="/detailPosting/{{$p->id}}">
                             <div class="features-small-item">
-                            @if($p->fotoPosting == null)
+                            @if($p->fotoPosting == " " || $p->fotoPosting == null)
                                 <img src="{{ asset('default.png')}}" alt="" width="200">
                                 @endif
                                 <img src="{{$p->fotoPosting}}" alt="" width="200">

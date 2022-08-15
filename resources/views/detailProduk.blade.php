@@ -16,7 +16,12 @@
             <!-- ***** Section Title End ***** -->
             @foreach($produk as $p)
             <div class="col-lg-5 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="{{asset($p->foto)}}" class="rounded img-fluid d-block mx-auto" alt="App">
+            @if($p->foto == " " || $p->foto == null)
+                                <img src="{{ asset('default.png')}}" class="rounded img-fluid d-block mx-auto" alt="App">
+                                @else
+                                <img src="{{$p->foto}}" class="rounded img-fluid d-block mx-auto" alt="App">
+                                @endif
+                   
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-top-fix">
