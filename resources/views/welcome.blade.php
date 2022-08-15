@@ -186,7 +186,6 @@ https://templatemo.com/tm-535-softy-pinko
                                 <img src="{{$p->fotoPosting}}" alt="" width="200">
                                 @endif
                                 <h6 class="features-title">{{$p->namaPosting}}</h6>
-                                <p>{!!\Illuminate\Support\Str::limit(htmlspecialchars_decode($p->isiPosting),50,"...")!!}</p>
                             </div>
                 </a>
                         </div>
