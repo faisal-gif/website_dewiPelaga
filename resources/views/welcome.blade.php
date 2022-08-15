@@ -228,7 +228,7 @@ https://templatemo.com/tm-535-softy-pinko
                                 <i class="fa fa-shopping-cart" style="font-size:30px;"></i>
                                 </div>
                                 <h5 class="features-title">{{$i->namaInformasi}}</h5>
-                                <p>{!!\Illuminate\Support\Str::limit(htmlspecialchars_decode($i->isiInformasi)),50,"...")!!}</p>
+                                <p></p>
                             </div>
                             </a>
                         </div>
@@ -259,7 +259,7 @@ https://templatemo.com/tm-535-softy-pinko
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="copyright">Copyright &copy; 2020 Softy Pinko Company - Design: TemplateMo</p>
+                    <p class="copyright">Copyright &copy; Politeknik Negeri Malang</p>
                 </div>
             </div>
         </div>
