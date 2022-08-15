@@ -114,6 +114,5 @@
       <!-- /.modal -->
       @endforeach
       
-@endsection
       
 @endsection
