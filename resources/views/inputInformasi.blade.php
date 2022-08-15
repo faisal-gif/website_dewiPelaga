@@ -47,7 +47,7 @@
                         <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Isi <span class="text-danger">*</span> </label>
                           <div class="col-sm-9">
-                          <textarea class="form-control @error('isiInformasi') is-invalid @enderror" id="summernote" name="isiInformasi">{{optional($i)->isiInformasi}}</textarea>
+                          <textarea class="form-control @error('isiInformasi') is-invalid @enderror" name="isiInformasi">{{optional($i)->isiInformasi}}</textarea>
                           @error('isiInformasi')
                           <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

@@ -33,7 +33,7 @@
                                 <i class="fa fa-shopping-cart" style="font-size:30px;"></i>
                                 </div>
                                 <h5 class="features-title">{{$i->namaInformasi}}</h5>
-                                <p>{!! $i->isiInformasi !!}</p>
+                                <p>{{ substr($i->isiInformasi,2,100) }}</p>
                             </div>
                             </a>
                         </div>
