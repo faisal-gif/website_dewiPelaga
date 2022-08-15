@@ -76,28 +76,10 @@ class InformasiController extends Controller
     public function prosesUpdate(Request $request)
     {
         $update=informasi::where('id', $request->input('id'))->first();
-        $content = $request->isiInformasi;
-        $dom = new \DomDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('imageFile');
-  
-        foreach ($imageFile as $item => $image) {
-            $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name= "/upload/" . time().$item.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-            
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
-        }
-  
-        $content = $dom->saveHTML();
+        
         $update->namaInformasi = $request->input('namaInformasi');
         $update->jenisInformasi = $request->input('jenisInformasi');
-        $update->isiInformasi = $content;
+        $update->isiInformasi = $request->input('isiInformasi');
         $update->tokoOnline = $request->input('tokoOnline');
         $update->socialMedia = $request->input('socialMedia');
         $update->lainnya = $request->input('lainnya');
