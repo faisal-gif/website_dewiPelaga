@@ -48,7 +48,7 @@
                         </div>
                         </div>
                 <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Keterangan Produk / Fasilitas</label>
+                        <label class="col-sm-2 col-form-label">Keterangan Produk / Fasilitas <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
                         <textarea name="keteranganBarang" id="summernote" class="form-control"></textarea>
                         </div>

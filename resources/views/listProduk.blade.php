@@ -47,12 +47,11 @@
                         <div class="pricing-body">
                          
                             <ul class="list">
-                            @if($p->foto == null)
+                                @if($p->foto == " " || $p->foto == null)
                                 <li class="active"><img src="{{ asset('default.png')}}" alt="" width="280"></li>
                                 @else
                                 <li class="active"><img src="{{$p->foto}}" alt="" width="280"></li>
                                 @endif
-                                <li class="active"><img src="{{asset($p->foto)}}" alt="" width="280"></li>
                                 <li class="active">Jenis Barang : {{$p->jenisBarang}}</li>
                                 <li class="active">Keterangan : {!! $p->keteranganBarang !!}</li>
                                 <li class="active">Harga : {{$p->hargaBarang}}</li>
