@@ -66,9 +66,10 @@
                         <label class="col-sm-2 col-form-label">Kategori Toko</label>
                         <div class="col-sm-9">
                     <select class="form-control select2" name="jenisInformasi">
-                    <option {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}>UMKM</option>
-                    <option  {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}> Olahraga </option>
-                    <option  {{ $i->jenisInformasi == "Pilih" ? 'selected' : '' }}> Pendidikan </option>
+                    <option {{ $i->jenisInformasi == "UMKM" ? 'selected' : '' }}>UMKM</option>
+                    <option  {{ $i->jenisInformasi == "Olahraga" ? 'selected' : '' }}> Olahraga </option>
+                    <option  {{ $i->jenisInformasi == "Pendidikan" ? 'selected' : '' }}> Pendidikan </option>
+                    <option  {{ optional($i)->jenisInformasi == "Pariwisata" ? 'selected' : '' }}> Pariwisata </option>
                  
                    
                   </select>

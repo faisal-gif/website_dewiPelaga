@@ -49,7 +49,7 @@
               </button>
             </div>
             <div class="modal-body">
-            @if($p->foto == " " || $p->foto == null)
+            @if($pr->foto == " " || $pr->foto == null)
               <p><img src="{{ asset('default.png')}}" alt="" width="280"></p>
                 @else
                 <p><img src="{{$pr->foto}}" alt="" width="280"></p>
