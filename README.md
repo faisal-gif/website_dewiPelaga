@@ -1,4 +1,4 @@
-# Website Tracer Study JTI Polinema
+# Website Dewi Pelaga
 
 Website Dewi Pelaga adalah platform untuk memopromosikan umkm yang ada di desa dewi pelaga. Dengan antarmuka pengguna yang ramah, pengguna dapat mempromosikan produk dari umkm mereka. Platform ini juga memberikan kemampuan bagi pengunjung website ini untuk mengubungi pemilik umkm jika pengunjung ingin membeli produk umkm tresebut. 
 
