@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\produk;
+use Yajra\DataTables\DataTables;
 
 class ProdukController extends Controller
 {
@@ -17,112 +18,93 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function formProduk()
+    public function produk()
     {
-        return view('inputProduk');
+        return view('produk.show');
     }
-    public function showProduk()
+    public function index()
     {
-        $auth=auth()->user()->id;
-        $produk=produk::where('idUser',$auth)->get();
-        return view('showProduk', compact('produk'));
+        $auth = auth()->user()->id;
+        $produk = produk::where('idUser', $auth)->select(['id', 'namaBarang', 'jenisBarang', 'keteranganBarang', 'hargaBarang', 'foto', 'informasiLainnya', 'created_at']);
+        return DataTables::of($produk)
+            ->addIndexColumn()
+            ->addColumn('tanggal_post', function ($row) {
+                return $row->created_at->format('d,M Y'); // Ubah format sesuai keinginan
+            })
+            ->addColumn('action', function ($row) {
+                $edit = '<a href="javascript:void(0)" id="edit_produk" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Edit" class="edit btn text-white btn-info btn-sm mt-1 editProduk"><i class="far fa-edit"></i> Edit</a>';
+                $delete = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $row->id . '" data-original-title="Delete" class="delete btn text-white btn-danger btn-sm mt-1 deleteBook"><i class="fas fa-trash"></i> Delete</a>';
+
+                return $edit . ' ' . $delete;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
-    public function prosesInput(Request $request)
+
+    public function store(Request $request)
     {
         $rules = [
-            'namaBarang' => 'required|',
-            'fotoPosting' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'jenisBarang' => 'required|',
+            'nama' => 'required|',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'jenis' => 'required|',
             'harga' => 'required|',
-            'keteranganBarang' => 'string|max:255',
+            'keterangan' => 'string|max:255',
         ];
-        $messages = [
-            'namaBarang.required' => 'Nama wajib diisi',
-            'jenisBarang.required' => 'Jenis wajib diisi',
-            'harga.required' => 'Harga wajib diisi',
-            'fotoPosting.image' => 'Foto harus gambar',
-            'fotoPosting.mimes' => 'Foto harus bertipe: jpeg,png,jpg,gif,svg',
-            'fotoPosting.max' => 'Foto maksimal 2mb',
-        ];
-        $request->validate($rules, $messages);
 
-        $image = $request->file('fotoBarang');
+        $request->validate($rules);
+
+        $image = $request->file('foto');
         $result = " ";
         if ($image != null) {
             $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
         }
-        $content = $request->keteranganBarang;
-        $dom = new \DomDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('imageFile');
-  
-        foreach ($imageFile as $item => $image) {
-            $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name= "/upload/" . time().$item.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-            
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
-        }
-  
-        $content = $dom->saveHTML();
-        $add=new produk([
-            'idUser' =>$request->input('idUser'),
-            'namaBarang' => $request->input('namaBarang'),
-            'jenisBarang' => $request->input('jenisBarang'),
-            'keteranganBarang' => $content,
-            'hargaBarang' =>  $request->input('harga'),
-            'informasiLainnya' =>  $request->input('informasiLainnya'),
+
+        $produk = produk::create([
+            'idUser' => $request->idUser,
+            'namaBarang' => $request->nama,
+            'jenisBarang' => $request->jenis,
+            'keteranganBarang' => $request->keterangan,
+            'hargaBarang' =>  $request->harga,
+            'informasiLainnya' =>  $request->lainnya,
             'foto' =>  $result
-          
-
         ]);
-        $add->save();
-        return redirect('/showProduk');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berhasil Disimpan!',
+            'data'    => $produk
+        ]);
     }
-    public function prosesUpdate(Request $request)
+    public function edit($id)
     {
-        $update=produk::where('id', $request->input('id'))->first();
+        $produk = produk::find($id);
+        return response()->json($produk);
+    }
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        $produk = produk::findOrFail($id);
         $image = $request->file('fotoBarang');
         $result = " ";
-        if ($image != null) {
+        if (isset($image)) {
             $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
-            $update->foto = $result;
+            $produk->foto = $result;
         }
-        $content = $request->keteranganBarang;
-        $dom = new \DomDocument();
-        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('imageFile');
-  
-        foreach ($imageFile as $item => $image) {
-            $data = $img->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name= "/upload/" . time().$item.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-            
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
-        }
-        
-        $content = $dom->saveHTML();
-        $update->namaBarang = $request->input('namaBarang');
-        $update->jenisBarang = $request->input('jenisBarang');
-        $update->keteranganBarang = $content;
-        $update->hargaBarang = $request->input('hargaBarang');
-        $update->informasiLainnya = $request->input('informasiLainnya');
-        $update->save();
-        return redirect('/showProduk');
+
+        $produk->namaBarang = $request->nama;
+        $produk->jenisBarang = $request->jenis;
+        $produk->keteranganBarang = $request->keterangan;
+        $produk->hargaBarang = $request->harga;
+        $produk->informasiLainnya = $request->lainnya;
+        $produk->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berhasil Diubah',
+        ]);
     }
-    public function prosesDelete($id)
+    public function destroy($id)
     {
-        $update=produk::where('id', $id)->delete();
+        $produk = produk::where('id', $id)->delete();
         return redirect('/showProduk');
     }
 }

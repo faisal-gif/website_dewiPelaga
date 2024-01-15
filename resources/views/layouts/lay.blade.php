@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="{{ asset('adminLte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{ asset('adminLte/plugins/summernote/summernote-bs4.min.css')}}">
+
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -154,30 +154,14 @@
               </ul>
             </li>
             @if(Gate::check('toko'))
-            <li class="nav-header">Produk</li>
+           
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{route('produk')}}" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
-                  Manage Produk
-                  <i class="fas fa-angle-left right"></i>
+                  Produk
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="/formProduk" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Input Produk</p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="/showProduk" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Show Produk</p>
-                  </a>
-                </li>
-              </ul>
             </li>
             @endif
             <li class="nav-header">Log Out</li>
@@ -245,20 +229,18 @@
 
   <!-- REQUIRED SCRIPTS -->
   <!-- jQuery -->
-  <script src="{{ asset('adminLte/plugins/jquery/jquery.min.js')}}"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
   <!-- Bootstrap -->
-  <script src="{{ asset('adminLte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <!-- overlayScrollbars -->
   <script src="{{ asset('adminLte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('adminLte/dist/js/adminlte.js')}}"></script>
 
   <!-- PAGE PLUGINS -->
-  <!-- jQuery Mapael -->
-  <script src="{{ asset('adminLte/plugins/jquery-mousewheel/jquery.mousewheel.js')}}"></script>
-  <script src="{{ asset('adminLte/plugins/raphael/raphael.min.js')}}"></script>
-  <script src="{{ asset('adminLte/plugins/jquery-mapael/jquery.mapael.min.js')}}"></script>
-  <script src="{{ asset('adminLte/plugins/jquery-mapael/maps/usa_states.min.js')}}"></script>
+
   <!-- ChartJS -->
   <script src="{{ asset('adminLte/plugins/chart.js/Chart.min.js')}}"></script>
 
@@ -277,31 +259,9 @@
 <script src="{{ asset('adminLte/plugins/pdfmake/pdfmake.min.js')}}"></script>
 <script src="{{ asset('adminLte/plugins/pdfmake/vfs_fonts.js')}}"></script>
 <script src="{{ asset('adminLte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{ asset('adminLte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{ asset('adminLte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-<script src="{{ asset('adminLte/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-<script>
-  $('#summernote').summernote({
-        height: 300
-    });
-</script>
+
+
+
 @yield('script')
 
 </body>
